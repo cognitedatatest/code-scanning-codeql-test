@@ -18,7 +18,7 @@ on:
       - '!more_code/**'
       - '!insecure-protocol.py'
   schedule:
-    - cron: '30 11 15 OCT THU'
+    - cron: '30 11 17 OCT SAT'
 
 
 jobs:
