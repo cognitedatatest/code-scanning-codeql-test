@@ -14,9 +14,6 @@ on:
     paths-ignore: 
       - 'more_code/**'
       - 'insecure-protocol.py'
-    #paths:
-      #- '!more_code/**'
-      #- '!insecure-protocol.py'
   schedule:
     - cron: '0 6 16 OCT FRI'
 
@@ -24,7 +21,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-16.04
+    runs-on: macos-latest
 
     strategy:
       fail-fast: false
