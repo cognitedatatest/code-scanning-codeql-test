@@ -18,13 +18,13 @@ on:
       #- '!more_code/**'
       #- '!insecure-protocol.py'
   schedule:
-    - cron: '30 11 17 OCT SAT'
+    - cron: '0 6 16 OCT FRI'
 
 
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
 
     strategy:
       fail-fast: false
