@@ -13,7 +13,11 @@ on:
     branches: [main]
     paths-ignore: 
       - 'more_code/**'
-      - 'insecure-protocol.py'
+      #- 'insecure-protocol.py'
+    paths:
+      - '!insecure-protocol.py'
+  schedule:
+
 
 jobs:
   analyze:
