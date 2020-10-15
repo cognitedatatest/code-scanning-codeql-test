@@ -11,11 +11,17 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [main]
+    paths-ignore: 
+      - 'more_code/**'
+      - 'insecure-protocol.py'
+  schedule:
+    - cron: '0 6 16 OCT FRI'
+
 
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     strategy:
       fail-fast: false
