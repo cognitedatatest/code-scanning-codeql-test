@@ -1,4 +1,4 @@
-import SQLInjectionSample;
+//import SQLInjectionSample;
 
 public class Vulnerable {
 
