@@ -72,8 +72,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
-       make bootstrap
-       make release
+        ./gradlew build
       if: ${{ matrix.language == 'java' }}
 
     - name: Perform CodeQL Analysis
