@@ -8,6 +8,9 @@ name: "CodeQL"
 on:
   push:
     branches: [main]
+    paths-ignore: 
+      - 'more_code/**'
+      - 'insecure-protocol.py'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [main]
@@ -67,9 +70,9 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    #- run: |
-    #   make bootstrap
-    #   make release
+    - run: |
+       make bootstrap
+       make release
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
