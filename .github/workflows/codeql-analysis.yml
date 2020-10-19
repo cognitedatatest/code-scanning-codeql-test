@@ -84,7 +84,7 @@ jobs:
     #- name: Build with Gradle
     #  run: ./gradlew build
     - run: |
-        ./gradlew build
+        gradle build
     #- run: java -cp java ./more_code/Vulnerable.java
       if: ${{ matrix.language == 'java' }}
 
