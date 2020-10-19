@@ -62,7 +62,7 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
       uses: github/codeql-action/autobuild@v1
-      #if: ${{ matrix.language == 'python' }}
+      if: ${{ matrix.language == 'python' }}
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
@@ -84,7 +84,7 @@ jobs:
     #- name: Build with Gradle
     #  run: ./gradlew build
     - run: |
-        gradle build
+        ./gradlew build
     #- run: java -cp java ./more_code/Vulnerable.java
       if: ${{ matrix.language == 'java' }}
 
