@@ -12,8 +12,8 @@ on:
     # The branches below must be a subset of the branches above
     branches: [main]
     paths-ignore: 
-      - 'more_code/**'
       - 'insecure-protocol.py'
+      - 'src/**'
   schedule:
     - cron: '0 6 16 OCT FRI'
 
@@ -21,14 +21,14 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         # Override automatic language detection by changing the below list
         # Supported options are ['csharp', 'cpp', 'go', 'java', 'javascript', 'python']
-        language: ['python']
+        language: ['python','java']
         # Learn more...
         # https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#overriding-automatic-language-detection
 
@@ -59,6 +59,7 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
       uses: github/codeql-action/autobuild@v1
+      #if: ${{ matrix.language == 'python' }}
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
@@ -67,9 +68,22 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    #- run: |
-    #   make bootstrap
-    #   make release
+    #- name: Set up JDK
+    #  uses: actions/setup-java@v1
+    #  if: ${{ matrix.language == 'java' }}
+    #  with:
+    #    java-version: '9.0.4' # The JDK version to make available on the path.
+    #    java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+    #    architecture: x64 # (x64 or x86) - defaults to x64
+    #- name: Grant execute permission for gradlew
+    #  run: chmod +x gradlew
+    #  if: ${{ matrix.language == 'java' }}
+    #- name: Build with Gradle
+    #  run: ./gradlew build
+    - run: |
+        ./gradlew build
+    #- run: java -cp java ./more_code/Vulnerable.java
+      if: ${{ matrix.language == 'java' }}
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
