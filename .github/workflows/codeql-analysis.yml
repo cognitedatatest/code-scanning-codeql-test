@@ -7,13 +7,10 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [main]
-    paths-ignore: 
-      - 'more_code/**'
-      - 'insecure-protocol.py'
+    branches: [main] 
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [main]
+    #branches: [main]
     paths-ignore: 
       - 'more_code/**'
       - 'insecure-protocol.py'
